@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Employee_Registration.Models.EmpRegistration>
+
+@{
+    ViewBag.Title = "ShowEmployeeDetails";
+}
+
+<h2>Employee Details</h2>
+
+<div>
+    @*<h4>EmpRegistration</h4>*@
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>SL No.</th>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Basic Salary</th>
+                <th>Allowance</th>
+                <th>Salary Deduction</th>
+                <th>Net Salary</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                int index = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@index</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmployeeID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EmployeeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BasicSalary)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Allowance)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SalaryDeductions)</td>
+                        <td>@Html.DisplayFor(modelItem => item.NetSalary)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                        <td>
+                            @if (item.Status == "Inactive")
+                            {
+                                @Html.ActionLink("Edit", "EditEmployee", new { id = item.Id })
+                                <span> | </span>
+                                @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.Id }) }
+                            else if(item.Status == "Active")
+                                {
+                                @Html.ActionLink("Edit", "EditEmployee", new { id = item.Id })}
+                            else
+                            {
+                                @Html.DisplayText("NotAllowed");
+                            }
+
+                        </td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="20">No records found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@*<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

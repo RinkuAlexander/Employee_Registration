@@ -1,0 +1,168 @@
+﻿@model Employee_Registration.Models.EmpRegistration
+
+@{
+    ViewBag.Title = "DeleteEmployee";
+}
+
+<h2>DeleteEmployee</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EmpRegistration</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportNationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportNationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportPlaceOfIssue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportPlaceOfIssue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportDateOfIssue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportDateOfIssue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassportExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassportExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisaType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisaType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceVisaIssued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceVisaIssued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisaNationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisaNationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VisaExpiryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VisaExpiryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasicSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasicSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Allowance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Allowance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaryDeductions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaryDeductions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NetSalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NetSalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
