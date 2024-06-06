@@ -7,7 +7,7 @@ namespace Employee_Registration.Models
 {
     public class DepartSum
     {
-          public string DepartmentID { get; set; }  
+        public string DepartmentID { get; set; }  
         public string DepartmentName { get; set; }
         public DateTime DateOfCreation { get; set; }
         public string Description { get; set; }

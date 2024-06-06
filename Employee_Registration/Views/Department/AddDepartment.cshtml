@@ -4,96 +4,86 @@
     ViewBag.Title = "AddDepartment";
 }
 
+<h2 class="text-center">Department</h2>
 
-    <h2 class="text-center">Department</h2>
+@using (Html.BeginForm("AddDepartment", "Department", FormMethod.Post, new { id = "departmentForm" }))
+{
+    @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SlNo, new { id = "SlNo" })
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DepartmentID, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.DepartmentID, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfCreation, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.DateOfCreation, new { htmlAttributes = new { @class = "form-control datepicker" } })
-                            @Html.ValidationMessageFor(model => model.DateOfCreation, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DepartmentID, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DepartmentID, Model.Departments, "Select Department", new { @class = "form-control", @id = "DepartmentID" })
+                        @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.DepartmentName, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
-                        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateOfCreation, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.DateOfCreation, new { htmlAttributes = new { @class = "form-control datepicker", @id = "DateOfCreation", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.DateOfCreation, "", new { @class = "text-danger" })
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "Active", Value = "Active" },
-                                new SelectListItem { Text = "Inactive", Value = "Inactive" }
-                            }, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @id = "Description", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
 
-            @*<div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Create" class="btn btn-default" />
-                    </div>
-                </div*@
-           
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.SelectedEmployeeID, new { @class = "control-label" })
-                        @Html.DropDownListFor(m => m.SelectedEmployeeID, Model.Employees, "Select Employee", new { @class = "form-control", onchange = "this.form.submit();" })
-                        @Html.ValidationMessageFor(m => m.SelectedEmployeeID, "", new { @class = "text-danger" })
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.DepartmentName, new { htmlAttributes = new { @class = "form-control", @id = "DepartmentName", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.DepartmentName, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control", @id = "Status", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="max-width: 1200px;">
+            <div class="row mx-auto text-center">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeID, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.EmployeeID, Model.Employees, "Select Employee", new { @class = "form-control", @id = "employeeSelect" })
+                        @Html.ValidationMessageFor(m => m.EmployeeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-2">
                     <div class="form-group">
                         @Html.LabelFor(m => m.EmployeeName, new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @readonly = "readonly" })
+                        @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @id = "employeeName", @readonly = "readonly" })
                         @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group">
                         @Html.LabelFor(m => m.DateOfJoining, new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.DateOfJoining, new { @class = "form-control", @type = "date" })
+                        @Html.TextBoxFor(m => m.DateOfJoining, new { @class = "form-control", @type = "date", @id = "DateOfJoining" })
                         @Html.ValidationMessageFor(m => m.DateOfJoining, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -101,7 +91,7 @@
                 <div class="col-md-2">
                     <div class="form-group">
                         @Html.LabelFor(m => m.ContractPeriod, new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.ContractPeriod, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.ContractPeriod, new { @class = "form-control", @id = "ContractPeriod" })
                         @Html.ValidationMessageFor(m => m.ContractPeriod, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -109,20 +99,180 @@
                 <div class="col-md-1">
                     <div class="form-group">
                         <label class="control-label">&nbsp;</label>
-                        <input type="submit" value="Add" class="btn btn-primary form-control" />
+                        <input type="button" value="Add" id="addRow" class="btn btn-primary form-control" disabled />
                     </div>
                 </div>
             </div>
+
+            <div id="rowContainer" class="mt-4 text-center">
+                <table class="table table-bordered" id="addedRowsTable" style="display: none; max-width: 800px; margin: 0 auto;">
+                    <thead>
+                        <tr>
+                            <th>SlNo</th>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Date of Joining</th>
+                            <th>Contract Period</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="form-group text-center mt-3">
+                <button type="submit" class="btn btn-success" disabled>Save</button>
+                <button type="button" class="btn btn-secondary" id="cancelButton">Cancel</button>
+            </div>
         </div>
-    }
+    </div>
+}
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <!-- Include jQuery UI library -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd-mm-yy'
+            });
 
-    @*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+            // Fetch and set the next available SlNo on page load
+            $.ajax({
+                url: '@Url.Action("GetNextSlNo", "Department")',
+                type: 'GET',
+                success: function (data) {
+                    $('#SlNo').val(data.slNo);
+                },
+                error: function () {
+                    alert('Error retrieving the next SlNo');
+                }
+            });
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        
-    }
+            $('#DepartmentID').change(function () {
+                var departmentId = $(this).val();
+                if (departmentId) {
+                    $.ajax({
+                        url: '@Url.Action("GetDepartmentDetails", "Department")',
+                        type: 'GET',
+                        data: { departmentId: departmentId },
+                        success: function (data) {
+                            $('#DepartmentName').val(data.DepartmentName);
+                            $('#DateOfCreation').val(data.DateOfCreation);
+                            $('#Description').val(data.Description);
+                            $('#Status').val(data.Status);
 
+                            if (data.Status.toLowerCase() !== "deleted") {
+                                $('#addRow').prop('disabled', false);
+                                $('button[type="submit"]').prop('disabled', false);
+                            } else {
+                                $('#addRow').prop('disabled', true);
+                                $('button[type="submit"]').prop('disabled', true);
+                                alert('Cannot add employee to a deleted department.');
+                            }
+                        },
+                        error: function () {
+                            alert('Error retrieving department details');
+                        }
+                    });
+                } else {
+                    $('#DepartmentName').val('');
+                    $('#DateOfCreation').val('');
+                    $('#Description').val('');
+                    $('#Status').val('');
+                    $('#addRow').prop('disabled', true);
+                    $('button[type="submit"]').prop('disabled', true);
+                }
+            });
+
+            $('#employeeSelect').change(function () {
+                var employeeId = $(this).val();
+                if (employeeId) {
+                    $.ajax({
+                        url: '@Url.Action("GetEmployeeName", "Department")',
+                        type: 'GET',
+                        data: { employeeId: employeeId },
+                        success: function (data) {
+                            $('#employeeName').val(data.Name);
+                            if (data.Status.toLowerCase() === "deleted") {
+                                alert('Employee is deleted and cannot be added.');
+                                $('#addRow').prop('disabled', true);
+                            } else {
+                                $('#addRow').prop('disabled', false);
+                            }
+                        },
+                        error: function () {
+                            alert('Error retrieving employee name');
+                        }
+                    });
+                } else {
+                    $('#employeeName').val('');
+                    $('#addRow').prop('disabled', true);
+                }
+            });
+
+            $('#addRow').click(function () {
+                var slNo = $('#SlNo').val();
+                var employeeId = $('#employeeSelect').val();
+                var employeeName = $('#employeeName').val();
+                var dateOfJoining = $('#DateOfJoining').val();
+                var contractPeriod = $('#ContractPeriod').val();
+
+                if (employeeId && employeeName && dateOfJoining && contractPeriod) {
+                    var newRow = `
+                        <tr>
+                            <td>${slNo}</td>
+                            <td>${employeeId}</td>
+                            <td>${employeeName}</td>
+                            <td>${dateOfJoining}</td>
+                            <td>${contractPeriod}</td>
+                            <td>
+                                <a href="#" class="editRow">Edit</a> |
+                                <a href="#" class="removeRow">Remove</a>
+                            </td>
+                        </tr>
+                    `;
+                    $('#addedRowsTable tbody').append(newRow);
+                    $('#addedRowsTable').show();
+                    $('#SlNo').val(parseInt(slNo) + 1);
+                } else {
+                    alert('Please fill all fields.');
+                }
+            });
+
+            $(document).on('click', '.editRow', function (e) {
+                e.preventDefault();
+                var row = $(this).closest('tr');
+                $('#SlNo').val(row.find('td:eq(0)').text());
+                $('#employeeSelect').val(row.find('td:eq(1)').text()).change();
+                $('#employeeName').val(row.find('td:eq(2)').text());
+                $('#DateOfJoining').val(row.find('td:eq(3)').text());
+                $('#ContractPeriod').val(row.find('td:eq(4)').text());
+                row.remove();
+                if ($('#addedRowsTable tbody tr').length === 0) {
+                    $('#addedRowsTable').hide();
+                }
+            });
+
+            $(document).on('click', '.removeRow', function (e) {
+                e.preventDefault();
+                var row = $(this).closest('tr');
+                row.remove();
+                if ($('#addedRowsTable tbody tr').length === 0) {
+                    $('#addedRowsTable').hide();
+                }
+            });
+
+            $('#cancelButton').click(function () {
+                $('#departmentForm')[0].reset();
+                $('#addedRowsTable tbody').empty();
+                $('#addedRowsTable').hide();
+                location.reload();
+            });
+        });
+    </script>
+}

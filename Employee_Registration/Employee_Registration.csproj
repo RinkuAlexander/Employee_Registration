@@ -134,11 +134,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IDepartmentRepository.cs" />
     <Compile Include="Models\DepartDet.cs" />
     <Compile Include="Models\DepartmentViewModel.cs" />
     <Compile Include="Models\DepartSum.cs" />
     <Compile Include="Models\EmpRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DepartmentRepository.cs" />
     <Compile Include="Repository\Department.cs" />
     <Compile Include="Repository\Employee.cs" />
   </ItemGroup>
@@ -183,6 +185,9 @@
     <Content Include="Views\EmpReg\EditEmployee.cshtml" />
     <Content Include="Views\EmpReg\DeleteEmployee.cshtml" />
     <Content Include="Views\Department\AddDepartment.cshtml" />
+    <Content Include="Views\Department\AddDep.cshtml" />
+    <Content Include="Views\Department\ListDep.cshtml" />
+    <Content Include="Views\Department\DepEmp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
